@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
-import "../App.css";
-import { titleStyle } from "./styles/titleStyles";
-import { itemStyle } from "./styles/itemStyles";
-import "./Navbar.css";
 import logo from "../logo.png";
+import "../App.css";
+import "./Navbar.css";
+import { titleStyle, itemStyle } from "./sidebar-style";
 import { Home } from "../pages/Home";
 import { Product } from "../pages/Product";
 import { AboutUs } from "../pages/AboutUs";
@@ -25,7 +24,7 @@ export const Navbar = () => {
       path: "/about-us",
       componentName: "About Us",
     },
-    
+
     {
       path: "/wishlist",
 
@@ -36,22 +35,22 @@ export const Navbar = () => {
       ),
     },
     {
-        path: "/cart",
-  
-        componentName: showSideNav ? (
-          "Cart"
-        ) : (
-          <i class="fas fa-shopping-cart icon-link-3pt"></i>
-        ),
-      },
-      {
-        path: "/login",
-        componentName: showSideNav ? (
-         <button className="login-btn">Login</button>
-        ) : (
-          <i class="fas fa-user icon-link-3pt"></i>
-        ),
-      },
+      path: "/cart",
+
+      componentName: showSideNav ? (
+        "Cart"
+      ) : (
+        <i class="fas fa-shopping-cart icon-link-3pt"></i>
+      ),
+    },
+    {
+      path: "/login",
+      componentName: showSideNav ? (
+        <button className="login-btn">Login</button>
+      ) : (
+        <i class="fas fa-user icon-link-3pt"></i>
+      ),
+    },
   ];
   return (
     <>
@@ -96,8 +95,7 @@ export const Navbar = () => {
         />
 
         <div class="header-icons-3pt">
-        <input type="search" class="search" placeholder="Search.." />
-          
+          <input type="search" class="search" placeholder="Search.." />
         </div>
       </header>
       <Routes>

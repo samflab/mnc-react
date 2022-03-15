@@ -18,9 +18,10 @@ a{
 .login-btn{
     padding: 0.8rem 2rem;
     width: 50%;
-    font-size: 1rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-family: "Ubuntu", sans-serif;
     font-weight: 500;
     background-color: var(--font);
     border: 0;
