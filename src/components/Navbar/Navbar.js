@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
 import logo from "../logo.png";
 import "../App.css";
 import "./Navbar.css";
 import { titleStyle, itemStyle } from "./sidebar-style";
-import { Home } from "../pages/Home";
-import { Product } from "../pages/Product";
-import { AboutUs } from "../pages/AboutUs";
 
 export const Navbar = () => {
   const [showSideNav, setShowSideNav] = useState(false);
@@ -98,11 +95,7 @@ export const Navbar = () => {
           <input type="search" class="search" placeholder="Search.." />
         </div>
       </header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Product />} />
-        <Route path="/about-us" element={<AboutUs />} />
-      </Routes>
+      
     </>
   );
 };
