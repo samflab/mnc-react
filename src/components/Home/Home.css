@@ -1,0 +1,16 @@
+.hero-name-bold{
+    font-size: 2.2rem;
+}
+.hero-tagline{
+    font-size: 1.5rem;
+}
+
+.action-btn{
+    font-size: 1rem;
+}
+
+@media screen and (min-width: 750px) and (max-width: 900px) {
+    .hero-content{
+        padding-top: 4rem;
+    }
+}

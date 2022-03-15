@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
-import logo from "../logo.png";
-import "../App.css";
+import logo from "../../logo.png";
+import "../../App.css";
 import "./Navbar.css";
 import { titleStyle, itemStyle } from "./sidebar-style";
 
