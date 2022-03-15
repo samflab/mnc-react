@@ -1,0 +1,38 @@
+.search{
+    border: 1px solid var(--gray);
+    outline: none;
+    height: 2rem;
+    padding: 0 1rem;
+    width: 10rem;
+    border-radius: 5px;
+    font-family: "Roboto", sans-serif;
+}
+.mbr-vw{
+    display: none;
+}
+
+a{
+    color: black;
+}
+
+.login-btn{
+    padding: 0.8rem 2rem;
+    width: 50%;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    background-color: var(--font);
+    border: 0;
+    color: var(--primary);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 750px) {
+    .mbr-vw{
+        display: inline-flex;
+        width: 70vw;
+    }
+    
+}
