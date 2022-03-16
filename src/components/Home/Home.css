@@ -44,8 +44,14 @@
   gap: 4rem;
   justify-content: space-evenly;
 }
+
 .product {
-  width: 18rem;
+  width: 15.5rem;
+}
+
+.product-img {
+  height: 20rem;
+  width: 15rem;
 }
 .product-name {
   white-space: nowrap;
@@ -53,20 +59,19 @@
   overflow: hidden;
   margin-right: 1rem;
 }
-.author{
-    font-family: "Roboto",sans-serif;
-    color: var(--gray);
-    padding: 0rem 0.5rem;
-
+.author {
+  font-family: "Roboto", sans-serif;
+  color: var(--gray);
+  padding: 0rem 0.5rem;
 }
-.price-tag{
-    color: var(--brown)
+.price-tag {
+  color: var(--brown);
 }
-.original{
-    color: var(--gray);
+.original {
+  color: var(--gray);
 }
-.discount{
-    color: green;
+.discount {
+  color: green;
 }
 @media screen and (min-width: 750px) and (max-width: 900px) {
   .hero-content {
