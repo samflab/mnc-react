@@ -1,0 +1,19 @@
+.filter{
+    cursor: pointer;
+    margin: 1rem 0rem 0rem 2rem;
+    border-radius: 5px 5px 0 0;
+}
+.filter-div{
+    margin: 0rem 2rem;
+    border-radius: 0 5px 5px 5px;
+}
+.clear-filter{
+    background-color: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    text-transform: capitalize;
+}
