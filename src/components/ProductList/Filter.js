@@ -48,7 +48,7 @@ export default function Filter() {
               onChange={() =>
                 dispatch({
                   type: "PRICE_SORT",
-                  payload: "low-to-high-price",
+                  payload: "LOW-TO-HIGH-PRICE",
                 })
               }
               value="low-high-price"
@@ -65,7 +65,7 @@ export default function Filter() {
               onChange={() =>
                 dispatch({
                   type: "PRICE_SORT",
-                  payload: "high-to-low-price",
+                  payload: "HIGH-TO-LOW-PRICE",
                 })
               }
               value="high-low-price"
@@ -107,7 +107,7 @@ export default function Filter() {
               onChange={() =>
                 dispatch({
                   type: "RATING_SORT",
-                  payload: "low-to-high-rating",
+                  payload: "LOW-TO-HIGH-RATING",
                 })
               }
               value="low-high-rating"
@@ -124,7 +124,7 @@ export default function Filter() {
               onChange={() =>
                 dispatch({
                   type: "RATING_SORT",
-                  payload: "high-to-low-rating",
+                  payload: "HIGH-TO-LOW-RATING",
                 })
               }
               value="high-low-rating"

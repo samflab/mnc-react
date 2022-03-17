@@ -2,22 +2,22 @@ const filterMethod = (state, data) => {
     let temp = [...data];
   
     //Price: High to Low Sorting
-    if (state.priceSort === "high-to-low-price")
+    if (state.priceSort === "HIGH-TO-LOW-PRICE")
       temp = temp.sort((curr, prev) => prev.price - curr.price);
   
     //Price: Low to High Sorting
-    if (state.priceSort === "low-to-high-price")
+    if (state.priceSort === "LOW-TO-HIGH-PRICE")
       temp = temp.sort((curr, prev) => curr.price - prev.price);
   
     //Price Range
     if (state.range) temp = temp.filter((i) => i.price <= state.range);
   
     //Rating: High to Low Sorting
-    if (state.ratingSort === "high-to-low-rating")
+    if (state.ratingSort === "HIGH-TO-LOW-RATING")
       temp = temp.sort((curr, prev) => prev.rating - curr.rating);
   
     //Rating: High to Low Sorting
-    if (state.ratingSort === "low-to-high-rating")
+    if (state.ratingSort === "LOW-TO-HIGH-RATING")
       temp = temp.sort((curr, prev) => curr.rating - prev.rating);
   
     //Category Filtering
