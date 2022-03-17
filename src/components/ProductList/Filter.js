@@ -14,12 +14,9 @@ export default function Filter() {
         <i class="fas fa-sort"></i> Filters
       </button>
       {showFilter ? (
-        <div className="filter-div" style={{ display: "block" }}>
+        <div className="filter-div">
           <div>
-            <h3
-              className="filter-heading"
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
+            <h3 className="filter-heading">
               <u>Price</u>
               <button
                 onClick={() => dispatch({ type: "CLEAR_FILTER" })}
@@ -125,21 +122,21 @@ export default function Filter() {
             <h3>
               <u>Categories</u>
             </h3>
-            <div style={{display:"flex",flexWrap:"wrap"}}>
+            <div className="category-container-div">
               {categoryData.map((genre) => {
                 return (
-                  <div style={{display:"flex", alignItems:"center"}}>
-                    <input
-                      type="checkbox"
-                      checked={category.includes(genre.type)}
-                      onChange={() =>
-                        dispatch({ type: "CATEGORY", payload: genre.type })
-                      }
-                      name={genre.type}
-                      id={genre.type}
-                      style={{marginRight:"0.5rem"}}
-                    />
+                  <div className="category-item">
                     <label htmlFor={genre.type} className="checkbox">
+                      <input
+                        type="checkbox"
+                        checked={category.includes(genre.type)}
+                        onChange={() =>
+                          dispatch({ type: "CATEGORY", payload: genre.type })
+                        }
+                        name={genre.type}
+                        id={genre.type}
+                        style={{ marginRight: "0.5rem" }}
+                      />
                       {genre.type.split("-").join("")}
                     </label>
                   </div>
