@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Product } from "./Product";
 import Filter from "./Filter";
+import "./Filter.css";
 import { useFilter } from "../../context/filter-context";
 import { filterMethod } from "../../util/filter-method";
 
@@ -24,16 +25,8 @@ export const ProductList = () => {
 
   return (
     <>
-      <Filter/>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "1rem",
-          padding: "2rem",
-          justifyContent: "center",
-        }}
-      >
+      <Filter />
+      <div className="product-list-container">
         {filterData.map((i) => {
           const discount = Math.ceil(
             ((i.originalPrice - i.price) / i.originalPrice) * 100

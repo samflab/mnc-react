@@ -135,7 +135,7 @@ export default function Filter() {
                         }
                         name={genre.type}
                         id={genre.type}
-                        style={{ marginRight: "0.5rem" }}
+                        className="category-input"
                       />
                       {genre.type.split("-").join("")}
                     </label>
