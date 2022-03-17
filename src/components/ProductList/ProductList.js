@@ -27,20 +27,22 @@ export const ProductList = () => {
     <>
       <Filter />
       <div className="product-list-container">
-        {filterData.map((i) => {
+        {filterData.map((filterProduct) => {
           const discount = Math.ceil(
-            ((i.originalPrice - i.price) / i.originalPrice) * 100
+            ((filterProduct.originalPrice - filterProduct.price) /
+              filterProduct.originalPrice) *
+              100
           );
 
           return (
             <Product
-              title={i.title}
+              title={filterProduct.title}
               discount={discount}
-              author={i.author}
-              img={i.img}
-              rating={i.rating}
-              price={i.price}
-              originalPrice={i.originalPrice}
+              author={filterProduct.author}
+              img={filterProduct.img}
+              rating={filterProduct.rating}
+              price={filterProduct.price}
+              originalPrice={filterProduct.originalPrice}
             />
           );
         })}
