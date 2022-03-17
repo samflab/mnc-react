@@ -4,21 +4,21 @@ import { useFilter } from "../../context/filter-context";
 import axios from "axios";
 export default function Filter() {
   const [showFilter, setShowFilter] = useState(false);
-  const [categoryData, setCategoryData ] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
 
   const getCategoryData = async () => {
     const response = await axios.get("/api/categories");
     const data = response.data.categories;
-    const newData = [...data].map((i)=> i.categoryName);
-    setCategoryData(newData)
-    console.log(newData)
+    const newData = [...data].map((i) => i.categoryName);
+    setCategoryData(newData);
+    console.log(newData);
     return newData;
-  }
+  };
 
-  console.log(categoryData)
-  useEffect(()=>{
-    getCategoryData()
-  },[])
+  console.log(categoryData);
+  useEffect(() => {
+    getCategoryData();
+  }, []);
 
   const {
     state: { priceSort, category, ratingSort, range },
@@ -34,7 +34,7 @@ export default function Filter() {
         <div className="filter-div">
           <div>
             <h3 className="filter-heading">
-              <u>Price</u>
+              <u>Sort by Price</u>
               <button
                 onClick={() => dispatch({ type: "CLEAR_FILTER" })}
                 className="clear-filter"
@@ -42,38 +42,40 @@ export default function Filter() {
                 Clear
               </button>
             </h3>
-            <input
-              type="radio"
-              checked={priceSort === "low-to-high-price"}
-              onChange={() =>
-                dispatch({
-                  type: "PRICE_SORT",
-                  payload: "LOW-TO-HIGH-PRICE",
-                })
-              }
-              value="low-high-price"
-              name="price-sort"
-              id="low-high-price"
-            />
+
             <label htmlFor="price-sort" className="checkbox">
-              Price: low to high
+              <input
+                type="radio"
+                checked={priceSort === "LOW-TO-HIGH-PRICE"}
+                onChange={() =>
+                  dispatch({
+                    type: "PRICE_SORT",
+                    payload: "LOW-TO-HIGH-PRICE",
+                  })
+                }
+                value="low-high-price"
+                name="price-sort"
+                id="low-high-price"
+              />
+              Price: Low to High
             </label>
             <br />
-            <input
-              type="radio"
-              checked={priceSort === "high-to-low-price"}
-              onChange={() =>
-                dispatch({
-                  type: "PRICE_SORT",
-                  payload: "HIGH-TO-LOW-PRICE",
-                })
-              }
-              value="high-low-price"
-              name="price-sort"
-              id="high-low-price"
-            />
+
             <label htmlFor="price-sort" className="checkbox">
-              Price: high to low
+              <input
+                type="radio"
+                checked={priceSort === "HIGH-TO-LOW-PRICE"}
+                onChange={() =>
+                  dispatch({
+                    type: "PRICE_SORT",
+                    payload: "HIGH-TO-LOW-PRICE",
+                  })
+                }
+                value="high-low-price"
+                name="price-sort"
+                id="high-low-price"
+              />
+              Price: High to Low
             </label>
           </div>
 
@@ -101,38 +103,40 @@ export default function Filter() {
             <h3>
               <u>Rating</u>
             </h3>
-            <input
-              type="radio"
-              checked={ratingSort === "low-to-high-rating"}
-              onChange={() =>
-                dispatch({
-                  type: "RATING_SORT",
-                  payload: "LOW-TO-HIGH-RATING",
-                })
-              }
-              value="low-high-rating"
-              name="rating-sort"
-              id="low-high-rating"
-            />
+
             <label htmlFor="rating-sort" className="checkbox">
-              Rating: low to high
+              <input
+                type="radio"
+                checked={ratingSort === "LOW-TO-HIGH-RATING"}
+                onChange={() =>
+                  dispatch({
+                    type: "RATING_SORT",
+                    payload: "LOW-TO-HIGH-RATING",
+                  })
+                }
+                value="low-high-rating"
+                name="rating-sort"
+                id="low-high-rating"
+              />
+              Rating: Low to High
             </label>
             <br />
-            <input
-              type="radio"
-              checked={ratingSort === "high-to-low-rating"}
-              onChange={() =>
-                dispatch({
-                  type: "RATING_SORT",
-                  payload: "HIGH-TO-LOW-RATING",
-                })
-              }
-              value="high-low-rating"
-              name="rating-sort"
-              id="high-low-rating"
-            />
+
             <label htmlFor="rating-sort" className="checkbox">
-              Rating: high to low
+              <input
+                type="radio"
+                checked={ratingSort === "HIGH-TO-LOW-RATING"}
+                onChange={() =>
+                  dispatch({
+                    type: "RATING_SORT",
+                    payload: "HIGH-TO-LOW-RATING",
+                  })
+                }
+                value="high-low-rating"
+                name="rating-sort"
+                id="high-low-rating"
+              />
+              Rating: High to Low
             </label>
           </div>
           <div>
@@ -168,4 +172,3 @@ export default function Filter() {
     </>
   );
 }
-
