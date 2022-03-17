@@ -22,8 +22,6 @@ export const ProductList = () => {
   const { state } = useFilter();
   const filterData = filterMethod(state, product);
 
-  console.log("data", filterData)
-
   return (
     <>
       <Filter/>
