@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Filter.css";
 import { useFilter } from "../../context/filter-context";
+import axios from "axios";
 export default function Filter() {
   const [showFilter, setShowFilter] = useState(false);
+  const [categoryData, setCategoryData ] = useState([]);
+
+  const getCategoryData = async () => {
+    const response = await axios.get("/api/categories");
+    const data = response.data.categories;
+    const newData = [...data].map((i)=> i.categoryName);
+    setCategoryData(newData)
+    console.log(newData)
+    return newData;
+  }
+
+  console.log(categoryData)
+  useEffect(()=>{
+    getCategoryData()
+  },[])
+
   const {
     state: { priceSort, category, ratingSort, range },
     dispatch,
@@ -123,21 +140,21 @@ export default function Filter() {
               <u>Categories</u>
             </h3>
             <div className="category-container-div">
-              {categoryData.map((genre) => {
+              {categoryData.map((genre, id) => {
                 return (
-                  <div className="category-item">
-                    <label htmlFor={genre.type} className="checkbox">
+                  <div className="category-item" key={id}>
+                    <label htmlFor={genre} className="checkbox">
                       <input
                         type="checkbox"
-                        checked={category.includes(genre.type)}
+                        checked={category.includes(genre)}
                         onChange={() =>
-                          dispatch({ type: "CATEGORY", payload: genre.type })
+                          dispatch({ type: "CATEGORY", payload: genre })
                         }
-                        name={genre.type}
-                        id={genre.type}
+                        name={genre}
+                        id={genre}
                         className="category-input"
                       />
-                      {genre.type.split("-").join("")}
+                      {genre.split("-").join("")}
                     </label>
                   </div>
                 );
@@ -152,45 +169,3 @@ export default function Filter() {
   );
 }
 
-export const categoryData = [
-  {
-    type: "drama",
-  },
-  {
-    type: "horror",
-  },
-  {
-    type: "shonen",
-  },
-  {
-    type: "shojo",
-  },
-  {
-    type: "seinen",
-  },
-  {
-    type: "romantic",
-  },
-  {
-    type: "fantasy",
-  },
-
-  {
-    type: "adventure",
-  },
-  {
-    type: "mystery",
-  },
-  {
-    type: "slice-of-life",
-  },
-  {
-    type: "thriller",
-  },
-  {
-    type: "comedy",
-  },
-  {
-    type: "action",
-  },
-];
