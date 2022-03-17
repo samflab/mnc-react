@@ -1,0 +1,45 @@
+.filter {
+  cursor: pointer;
+  margin: 1rem 0rem 0rem 2rem;
+  border-radius: 5px 5px 0 0;
+}
+.filter-div {
+  margin: 0rem 2rem;
+  border-radius: 0 5px 5px 5px;
+  display: block;
+}
+.filter-heading {
+  display: flex;
+  justify-content: space-between;
+}
+.clear-filter {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 5px;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+}
+
+.category-container-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+.category-item {
+  display: flex;
+  align-items: center;
+}
+
+.category-input{
+    margin-right: 0.5rem;
+}
+
+.product-list-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
+    justify-content: center;
+}

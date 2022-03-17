@@ -28,7 +28,7 @@ export const products = [
     category: "adventure",
     tag: "trending",
   },
-  
+
   {
     _id: uuid(),
     img: "https://upload.wikimedia.org/wikipedia/en/9/9a/FairyTail-Volume_46_cover.jpg",
@@ -40,7 +40,7 @@ export const products = [
     category: "adventure",
     tag: "new",
   },
-  
+
   {
     _id: uuid(),
     img: "https://www.hobikuyusu.com/image/cache/catalog/urun-resimleri/image/data/cilt/cilt/4(4)-850x1190h.jpg",
@@ -54,22 +54,24 @@ export const products = [
   },
   {
     _id: uuid(),
-    img:"https://data.whicdn.com/images/304966058/original.jpg",
+    img: "https://data.whicdn.com/images/304966058/original.jpg",
     title: "Parasyte",
-    author:"Hitoshi Iwaaki",
+    author: "Hitoshi Iwaaki",
     price: "300",
-    originalPrice:"1500",
+    originalPrice: "1500",
     rating: "2.3",
-    category:"horror",
-    tag:"most read"
-  },{
+    category: "horror",
+    tag: "most read",
+  },
+  {
     _id: uuid(),
     img: "https://avatars.mds.yandex.net/i?id=8946f4615b5c97ca90fc20fde77eff76-4534759-images-thumbs&n=13&exp=1",
-    title:"Gantz",
-    author:"Hiroya Oku",
-    price:"100",
-    originalPrice:"1000",
-    rating:"1",
-    tag:"new"
-  }
+    title: "Gantz",
+    author: "Hiroya Oku",
+    price: "100",
+    originalPrice: "1000",
+    category: "horror",
+    rating: "1",
+    tag: "new",
+  },
 ];

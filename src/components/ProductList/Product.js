@@ -20,8 +20,8 @@ export const Product = (props) => {
           </div>
           <span class="author">by {props.author}</span>
           <div style={{ marginBlock: "1rem" }}>
-            <span class="price-tag">₹ {props.price}</span>
-            <del class="price-tag original">₹ {props.originalPrice}</del>
+            <span class="price-tag">₹{props.price}</span>
+            <del class="price-tag original">₹{props.originalPrice}</del>
             <span class="price-tag discount">{props.discount}% Off</span>
           </div>
           <button class="add-to-cart">Add to Cart</button>
