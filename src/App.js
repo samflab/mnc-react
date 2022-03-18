@@ -4,6 +4,8 @@ import { Routes, Route} from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Product } from "./pages/Product";
 import { AboutUs } from "./pages/AboutUs";
+import Mockman from "mockman-js";
+import { Wishlist } from "./pages/Wishlist";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Product />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path= "/wishlist" element={<Wishlist/>}/>
+        <Route path="/mockman" element={<Mockman/>}/>
       </Routes>
     </div>
   );
