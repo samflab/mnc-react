@@ -13,6 +13,9 @@ export const products = [
     author: "Masashi Kishimoto",
     price: "723",
     originalPrice: "2560",
+    get discount() {
+      return Math.ceil((this.originalPrice - this.price) / this.originalPrice *100);
+    },
     rating: "4.9",
     category: "adventure",
     tag: "trending",
@@ -24,6 +27,10 @@ export const products = [
     author: "Kohei Horikoshi",
     price: "899",
     originalPrice: "1560",
+    get discount() {
+      return Math.ceil((this.originalPrice - this.price) / this.originalPrice *100);
+
+    },
     rating: "4.2",
     category: "adventure",
     tag: "trending",
@@ -36,6 +43,9 @@ export const products = [
     author: "Hiro Mashima",
     price: "540",
     originalPrice: "720",
+    get discount() {
+      return Math.ceil((this.originalPrice - this.price) / this.originalPrice *100);
+    },
     rating: "4.7",
     category: "adventure",
     tag: "new",
@@ -48,6 +58,9 @@ export const products = [
     author: "Tsugumi Ohba",
     price: "640",
     originalPrice: "1020",
+    get discount() {
+      return Math.ceil((this.originalPrice - this.price) / this.originalPrice *100);
+    },
     rating: "3.5",
     category: "mystery",
     tag: "most read",
@@ -59,6 +72,9 @@ export const products = [
     author: "Hitoshi Iwaaki",
     price: "300",
     originalPrice: "1500",
+    get discount() {
+      return Math.ceil((this.originalPrice - this.price) / this.originalPrice *100);
+    },
     rating: "2.3",
     category: "horror",
     tag: "most read",
@@ -70,6 +86,9 @@ export const products = [
     author: "Hiroya Oku",
     price: "100",
     originalPrice: "1000",
+    get discount() {
+      return Math.ceil((this.originalPrice - this.price) / this.originalPrice *100);
+    },
     category: "horror",
     rating: "1",
     tag: "new",

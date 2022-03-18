@@ -8,8 +8,9 @@ import { useFilter } from "../../context/filter-context";
 import { filterMethod } from "../../util/filter-method";
 
 export const ProductList = () => {
-  const { wishlistDispatch } = useWishlist();
-
+  const { wishlistState, wishlistDispatch } = useWishlist();
+  console.log("wishlistState:",wishlistState)
+  
   const [product, setProduct] = useState([]);
   const getProducts = async () => {
     const response = await axios.get("/api/products");
@@ -30,12 +31,6 @@ export const ProductList = () => {
       <Filter />
       <div className="product-list-container">
         {filterData.map((filterProduct) => {
-          const discount = Math.ceil(
-            ((filterProduct.originalPrice - filterProduct.price) /
-              filterProduct.originalPrice) *
-              100
-          );
-
           return (
             <div class="product" key={filterProduct.id}>
               <div class="product-img">
@@ -44,17 +39,31 @@ export const ProductList = () => {
                   alt={filterProduct.title}
                   class="img"
                 />
-                <span
-                  class=""
-                  onClick={() =>
-                    wishlistDispatch({
-                      type: "ADD_TO_WISHLIST",
-                      payload: filterProduct,
-                    })
-                  }
-                >
-                  <i class="far fa-bookmark bookmark"></i>
-                </span>
+                { wishlistState.find(wishlistItem => wishlistItem._id === filterProduct._id) ? (
+                  <span key={filterProduct._id}
+                    className=""
+                    onClick={() =>
+                      wishlistDispatch({
+                        type: "REMOVE_FROM_WISHLIST",
+                        payload: filterProduct,
+                      })
+                    }
+                  >
+                    <i className="far fa-times-circle close bookmark"></i>
+                  </span>
+                ) : (
+                  <span key={filterProduct._id}
+                    class=""
+                    onClick={() =>
+                      wishlistDispatch({
+                        type: "ADD_TO_WISHLIST",
+                        payload: filterProduct,
+                      })
+                    }
+                  >
+                    <i class="far fa-bookmark bookmark"></i>
+                  </span>
+                )}
               </div>
               <div class="card-body">
                 <div class="product-name-container">
@@ -70,7 +79,7 @@ export const ProductList = () => {
                   <del class="price-tag original">
                     ₹{filterProduct.originalPrice}
                   </del>
-                  <span class="price-tag discount">{discount}% Off</span>
+                  <span class="price-tag discount">{filterProduct.discount}% Off</span>
                 </div>
                 <button class="add-to-cart">Add to Cart</button>
               </div>
