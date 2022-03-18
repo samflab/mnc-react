@@ -9,10 +9,10 @@ export const WishlistItems = () => {
   return (
     <>
       <h2 class="page-heading">Wishlist</h2>
-      {wishlistState.length ? (
-        <EmptyWishlist />
-      ) : (
-        wishlistState.map((product) => {
+
+      {wishlistState.length === 0 ? <EmptyWishlist /> : ""}
+      <div className="wishlist-container">
+        {wishlistState.map((product) => {
           return (
             <div className="product" key={product._id}>
               <div className="product-img">
@@ -43,14 +43,16 @@ export const WishlistItems = () => {
                   <del className="price-tag original">
                     ₹{product.originalPrice}
                   </del>
-                  <span className="price-tag discount">{product.discount}% Off</span>
+                  <span className="price-tag discount">
+                    {product.discount}% Off
+                  </span>
                 </div>
                 <button className="add-to-cart">Move to Cart</button>
               </div>
             </div>
           );
-        })
-      )}
+        })}
+      </div>
     </>
   );
 };

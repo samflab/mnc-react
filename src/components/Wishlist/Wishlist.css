@@ -4,3 +4,9 @@
 .close {
   transform: translate(-2.5rem, 0rem);
 }
+
+.wishlist-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
