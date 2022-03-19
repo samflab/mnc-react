@@ -15,7 +15,7 @@ export const PriceCard = () => {
       <div className="coupon-container">
         <div className="coupon-detail-title hd">Coupons</div>
         <div className="coupon-status mrp">No coupons applied</div>
-        <button className="outline-btn btn">apply coupons</button>
+        <button className="outline-btn btn coupon-btn">apply coupons</button>
       </div>
 
       <div className="price-detail-title hd">
@@ -28,8 +28,8 @@ export const PriceCard = () => {
           <span>Total MRP</span> <span>₹{totalMRP}</span>
         </div>
 
-        <div className="mrp">
-          <span style={{color: "green"}}>Discount on MRP</span> <span style={{color: "green"}}>- ₹{totalDiscount}</span>
+        <div className="mrp discount">
+          <span>Discount on MRP</span> <span>- ₹{totalDiscount}</span>
         </div>
 
         <div className="mrp">

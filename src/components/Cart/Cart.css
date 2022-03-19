@@ -24,7 +24,6 @@
   border: 3px solid var(--font);
 }
 
-.outline-btn,
 .increase-quantity,
 .decrease-quantity {
   border: 1px solid var(--font);
@@ -37,6 +36,7 @@
 
 .wishlist-btn {
   border: 2px solid var(--font);
+  color: var(--font);
   font-family: "Roboto", sans-serif;
   font-size: 0.89rem;
   font-weight: 700;
@@ -61,6 +61,16 @@ button[disabled] {
   margin-bottom: 1rem;
 }
 
+.coupon-btn{
+  color: brown;
+  border: none;
+  font-weight: 600;
+  margin: 0;
+}
+
+.discount{
+  color: green;
+}
 .coupon-discount{
   opacity: 0.6;
 }
