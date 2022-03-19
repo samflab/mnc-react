@@ -6,11 +6,13 @@ import { useWishlist } from "../../context/wishlist-context";
 import "./Filter.css";
 import { useFilter } from "../../context/filter-context";
 import { filterMethod } from "../../util/filter-method";
+import { useCart } from "../../context/cart-context";
 
 export const ProductList = () => {
+  const { state } = useFilter();
   const { wishlistState, wishlistDispatch } = useWishlist();
-  console.log("wishlistState:",wishlistState)
-  
+  const { cartDispatch } = useCart();
+
   const [product, setProduct] = useState([]);
   const getProducts = async () => {
     const response = await axios.get("/api/products");
@@ -23,7 +25,6 @@ export const ProductList = () => {
     getProducts();
   }, []);
 
-  const { state } = useFilter();
   const filterData = filterMethod(state, product);
 
   return (
@@ -39,8 +40,11 @@ export const ProductList = () => {
                   alt={filterProduct.title}
                   class="img"
                 />
-                { wishlistState.find(wishlistItem => wishlistItem._id === filterProduct._id) ? (
-                  <span key={filterProduct._id}
+                {wishlistState.find(
+                  (wishlistItem) => wishlistItem._id === filterProduct._id
+                ) ? (
+                  <span
+                    key={filterProduct._id}
                     className=""
                     onClick={() =>
                       wishlistDispatch({
@@ -52,7 +56,8 @@ export const ProductList = () => {
                     <i className="far fa-times-circle close bookmark"></i>
                   </span>
                 ) : (
-                  <span key={filterProduct._id}
+                  <span
+                    key={filterProduct._id}
                     class=""
                     onClick={() =>
                       wishlistDispatch({
@@ -79,9 +84,21 @@ export const ProductList = () => {
                   <del class="price-tag original">
                     ₹{filterProduct.originalPrice}
                   </del>
-                  <span class="price-tag discount">{filterProduct.discount}% Off</span>
+                  <span class="price-tag discount">
+                    {filterProduct.discount}% Off
+                  </span>
                 </div>
-                <button class="add-to-cart">Add to Cart</button>
+                <button
+                  class="add-to-cart"
+                  onClick={() =>
+                    cartDispatch({
+                      type: "ADD_TO_CART",
+                      payload: filterProduct,
+                    })
+                  }
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           );

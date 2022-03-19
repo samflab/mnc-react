@@ -1,0 +1,16 @@
+.outline-btn, .increase-quantity, .decrease-quantity, .cart-card{
+    border: 1px solid var(--font);
+}
+
+.increase-quantity, .decrease-quantity{
+    color: var(--font)
+}
+
+.wishlist-btn{
+    border: 2px solid var(--font);
+    font-family: "Roboto", sans-serif;
+}
+
+button[disabled]{
+    cursor:default;
+}

@@ -1,10 +1,13 @@
 import React from "react";
 import { useWishlist } from "../../context/wishlist-context";
+import { useCart } from "../../context/cart-context";
 import { EmptyWishlist } from "./EmptyWishlist";
 import "./Wishlist.css";
 
 export const WishlistItems = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
+  const { cartDispatch } = useCart();
+
   console.log(wishlistState);
   return (
     <>
@@ -47,7 +50,13 @@ export const WishlistItems = () => {
                     {product.discount}% Off
                   </span>
                 </div>
-                <button className="add-to-cart">Move to Cart</button>
+                <button className="add-to-cart"
+                onClick={() =>
+                  cartDispatch({
+                    type: "ADD_TO_CART",
+                    payload: product,
+                  })
+                }>Move to Cart</button>
               </div>
             </div>
           );
