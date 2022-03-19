@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import heroImg from "./hero-img.jpg";
 
 export const Hero = () => {
   return (
@@ -19,7 +18,7 @@ export const Hero = () => {
         </Link>
       </div>
       <div class="hero-img-container">
-        <img src={heroImg} alt="Silent Voice" class="hero-img-tilt" />
+        <img src="/img/hero-img.jpg" alt="Silent Voice" class="hero-img-tilt" />
       </div>
     </main>
   );

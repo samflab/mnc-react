@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
-import logo from "../../logo.png";
 import "../../App.css";
 import "./Navbar.css";
 import { titleStyle, itemStyle } from "./sidebar-style";
@@ -62,7 +61,7 @@ export const Navbar = () => {
     <>
       <header class="header-3pt">
         <div class="header-logo-3pt">
-          <img src={logo} alt="" class="header-img-3pt" />
+          <img src="/img/logo.png" alt="" class="header-img-3pt" />
         </div>
 
         <div class="header-nav-3pt">
