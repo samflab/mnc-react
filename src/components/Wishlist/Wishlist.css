@@ -1,0 +1,12 @@
+.page-heading {
+  padding: 1.5rem 0rem;
+}
+.close {
+  transform: translate(-2.5rem, 0rem);
+}
+
+.wishlist-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}

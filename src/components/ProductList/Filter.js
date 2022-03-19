@@ -11,11 +11,9 @@ export default function Filter() {
     const data = response.data.categories;
     const newData = [...data].map((i) => i.categoryName);
     setCategoryData(newData);
-    console.log(newData);
     return newData;
   };
 
-  console.log(categoryData);
   useEffect(() => {
     getCategoryData();
   }, []);

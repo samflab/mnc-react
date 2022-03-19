@@ -30,6 +30,19 @@ a{
     cursor: pointer;
 }
 
+.badge{
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: var(--font);
+    transform: translate(-5px, -12px);
+    padding: 0.2rem 0.3rem;
+    
+    font-size: 0.87rem;
+    font-family: "Roboto", sans-serif;
+}
+
+
 @media screen and (max-width: 750px) {
     .mbr-vw{
         display: inline-flex;

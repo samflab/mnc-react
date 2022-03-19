@@ -5,9 +5,12 @@ import logo from "../../logo.png";
 import "../../App.css";
 import "./Navbar.css";
 import { titleStyle, itemStyle } from "./sidebar-style";
+import { useWishlist } from "../../context/wishlist-context";
 
 export const Navbar = () => {
   const [showSideNav, setShowSideNav] = useState(false);
+  const {wishlistState} = useWishlist();
+
   const routeData = [
     {
       path: "/",
@@ -28,7 +31,13 @@ export const Navbar = () => {
       componentName: showSideNav ? (
         "Wishlist"
       ) : (
-        <i class="far fa-bookmark icon-link-3pt"></i>
+        <i class="far fa-bookmark icon-link-3pt">
+          
+          <span className="badge">
+          {wishlistState.length}
+
+          </span>
+        </i>
       ),
     },
     {

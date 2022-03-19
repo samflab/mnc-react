@@ -1,12 +1,17 @@
 import React from "react";
+import {useWishlist} from "../../context/wishlist-context";
 
 export const Product = (props) => {
+  const {wishlistDispatch} = useWishlist()
   return (
     <>
-      <div class="product">
+      <div class="product" key={props.id}>
         <div class="product-img">
           <img src={props.img} alt={props.title} class="img" />
-          <span class="">
+          <span class="" onClick={()=> wishlistDispatch({
+            type: "ADD_TO_WISHLIST",
+            payload: props,
+          })}>
             <i class="far fa-bookmark bookmark"></i>
           </span>
         </div>
