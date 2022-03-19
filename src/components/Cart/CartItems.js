@@ -5,14 +5,11 @@ import "./Cart.css";
 export const CartItems = () => {
   const { cartState, cartDispatch } = useCart();
   const { wishlistDispatch } = useWishlist();
-
-  console.log(cartState);
-
+  
   return (
     <>
-      <h3 className="page-heading">Cart</h3>
 
-      <div>
+      <div className="cart-product-container">
         {cartState.map((product) => {
           return (
             <div className="cart-card" key={product._id}>
