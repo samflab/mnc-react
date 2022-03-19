@@ -1,16 +1,29 @@
-.outline-btn, .increase-quantity, .decrease-quantity, .cart-card{
-    border: 1px solid var(--font);
+.cart-card {
+  box-shadow: rgb(50 50 93 / 25%) 0px 2px 5px -1px,
+    rgb(0 0 0 / 30%) 0px 1px 3px -1px;
 }
-
-.increase-quantity, .decrease-quantity{
-    color: var(--font)
+.cart-img{
+    border: 3px solid var(--font);
 }
-
 .wishlist-btn{
-    border: 2px solid var(--font);
-    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}
+.outline-btn,
+.increase-quantity,
+.decrease-quantity {
+  border: 1px solid var(--font);
 }
 
-button[disabled]{
-    cursor:default;
+.increase-quantity,
+.decrease-quantity {
+  color: var(--font);
+}
+
+.wishlist-btn {
+  border: 2px solid var(--font);
+  font-family: "Roboto", sans-serif;
+}
+
+button[disabled] {
+  cursor: default;
 }

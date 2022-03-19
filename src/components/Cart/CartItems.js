@@ -79,12 +79,17 @@ export const CartItems = () => {
                 </div>
                 <button
                   className="wishlist-btn outline-btn btn"
-                  onClick={() =>
+                  onClick={() => {
                     wishlistDispatch({
                       type: "ADD_TO_WISHLIST",
                       payload: product,
+                    });
+                    cartDispatch({
+                      type: "REMOVE_FROM_CART",
+                      payload: product,
                     })
                   }
+                }
                 >
                   Move to Wishlist
                 </button>
