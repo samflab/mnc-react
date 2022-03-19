@@ -14,7 +14,7 @@ export const PriceCard = () => {
     <div className="price-details-conatiner">
       <div className="coupon-container">
         <div className="coupon-detail-title hd">Coupons</div>
-        <div className="coupon-status mrp">No apply coupons applied</div>
+        <div className="coupon-status mrp">No coupons applied</div>
         <button className="outline-btn btn">apply coupons</button>
       </div>
 
