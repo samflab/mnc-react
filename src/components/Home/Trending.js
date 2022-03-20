@@ -5,6 +5,7 @@ import { useWishlist } from "../../context/wishlist-context";
 import { ACTION_TYPE } from "../../util/actionType";
 import { dispatchHandler } from "../../util/dispatchHandler";
 import { presentItem } from "../../util/presentItem";
+import { ProductCard } from "../ProductList/ProductCard";
 import "./Home.css";
 
 export const Trending = () => {
@@ -30,74 +31,72 @@ export const Trending = () => {
       <p class="trending-sub">Top reads this week</p>
       <div class="trending">
         {trending.map((product) => {
+          const {
+            _id,
+            img,
+            title,
+            rating,
+            author,
+            price,
+            originalPrice,
+            discount,
+          } = product;
           const inWishlist = presentItem(wishlistState, product);
           const inCart = presentItem(cartState, product);
           return (
-            <div class="product" key={product.id}>
-              <div class="product-img">
-                <img src={product.img} alt={product.title} class="img" />
-                {inWishlist ? (
-                  <span
-                    key={product._id}
-                    onClick={() =>
-                      dispatchHandler(
-                        wishlistDispatch,
-                        ACTION_TYPE.REMOVE_FROM_WISHLIST,
-                        product
-                      )
-                    }
-                  >
-                    <i className="far fa-times-circle close bookmark"></i>
-                  </span>
-                ) : (
-                  <span
-                    key={product._id}
-                    class=""
-                    onClick={() =>
-                      dispatchHandler(
-                        wishlistDispatch,
-                        ACTION_TYPE.ADD_TO_WISHLIST,
-                        product
-                      )
-                    }
-                  >
-                    <i class="far fa-bookmark bookmark"></i>
-                  </span>
-                )}
-              </div>
-              <div class="card-body">
-                <div class="product-name-container">
-                  <span class="product-name">{product.title}</span>
-
-                  <span class="rating" role="img">
-                    {product.rating}/5⭐
-                  </span>
-                </div>
-                <span class="author">by {product.author}</span>
-                <div class="price-div">
-                  <span class="price-tag">₹{product.price}</span>
-                  <del class="price-tag original">₹{product.originalPrice}</del>
-                  <span class="price-tag discount">
-                    {product.discount}% Off
-                  </span>
-                </div>
-                <button
-                  class="add-to-cart"
-                  onClick={() =>
-                    dispatchHandler(
-                      cartDispatch,
-                      ACTION_TYPE.ADD_TO_CART,
-                      product
-                    )
-                  }
-
-                  disabled={inCart}
-                >
-
-                  {inCart ? "Go to Cart" : "Add to Cart"}
-                </button>
-              </div>
-            </div>
+            <ProductCard
+              key={_id}
+              id={_id}
+              img={img}
+              title={title}
+              rating={rating}
+              author={author}
+              price={price}
+              originalPrice={originalPrice}
+              discount={discount}
+              inWishlist={inWishlist}
+              inCart={inCart}
+              addToWishlist={() =>
+                dispatchHandler(
+                  wishlistDispatch,
+                  ACTION_TYPE.ADD_TO_WISHLIST,
+                  product
+                )
+              }
+              removeFromWishlist={() =>
+                dispatchHandler(
+                  wishlistDispatch,
+                  ACTION_TYPE.REMOVE_FROM_WISHLIST,
+                  product
+                )
+              }
+              addToCart={() =>
+                dispatchHandler(
+                  cartDispatch,
+                  ACTION_TYPE.ADD_TO_CART,
+                  product
+                )
+              }
+              removeFromCart={() =>
+                dispatchHandler(
+                  cartDispatch,
+                  ACTION_TYPE.REMOVE_FROM_CART,
+                  product
+                )
+              }
+              moveToCart={() => {
+                dispatchHandler(
+                  cartDispatch,
+                  ACTION_TYPE.ADD_TO_CART,
+                  product
+                );
+                dispatchHandler(
+                  wishlistDispatch,
+                  ACTION_TYPE.REMOVE_FROM_WISHLIST,
+                  product
+                );
+              }}
+            />
           );
         })}
       </div>
