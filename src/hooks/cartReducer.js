@@ -1,7 +1,7 @@
 import { ACTION_TYPE } from "../util/actionType";
 
 export const cartReducer = (state, action) => {
-  switch (ACTION_TYPE) {
+  switch (action.type) {
     case ACTION_TYPE.ADD_TO_CART:
       //check if a product is in cart
       let productInCartIndex = state.findIndex(
