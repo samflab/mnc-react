@@ -1,6 +1,8 @@
+import { ACTION_TYPE } from "../util/actionType";
+
 export const cartReducer = (state, action) => {
-  switch (action.type) {
-    case "ADD_TO_CART":
+  switch (ACTION_TYPE) {
+    case ACTION_TYPE.ADD_TO_CART:
       //check if a product is in cart
       let productInCartIndex = state.findIndex(
         (item) => item._id === action.payload._id
@@ -16,17 +18,17 @@ export const cartReducer = (state, action) => {
           : item
       );
 
-    case "REMOVE_FROM_CART":
+    case ACTION_TYPE.REMOVE_FROM_CART:
       return state.filter((item) => item._id !== action.payload._id);
 
-    case "INCREASE_QUANTITY":
+    case ACTION_TYPE.INCREASE_QUANTITY:
       return state.map((item) =>
         item._id === action.payload._id
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
 
-    case "DECREASE_QUANTITY":
+    case ACTION_TYPE.DECREASE_QUANTITY:
       return state.map((item) =>
         item._id === action.payload._id
           ? { ...item, quantity: item.quantity - 1 }
