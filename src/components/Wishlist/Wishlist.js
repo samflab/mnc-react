@@ -1,11 +1,8 @@
 import React from "react";
-import { useWishlist } from "../../context/wishlist-context";
-import { useCart } from "../../context/cart-context";
+import { useCart, useWishlist } from "../../context";
 import { EmptyWishlist } from "./EmptyWishlist";
 import "./Wishlist.css";
-import { dispatchHandler } from "../../util/dispatchHandler";
-import { ACTION_TYPE } from "../../util/actionType";
-import { presentItem } from "../../util/presentItem";
+import { ACTION_TYPE, dispatchHandler, presentItem } from "../../util";
 import { ProductCard } from "../ProductList/ProductCard";
 
 export const WishlistItems = () => {

@@ -1,34 +1,23 @@
 import React from "react";
-import { useCart } from "../../context/cart-context";
-import { useWishlist } from "../../context/wishlist-context";
-import { dispatchHandler } from "../../util/dispatchHandler";
-import { ACTION_TYPE } from "../../util/actionType";
+import { useCart,useWishlist } from "../../context";
+import { dispatchHandler, ACTION_TYPE, presentItem } from "../../util";
 import "./Cart.css";
-import { presentItem } from "../../util/presentItem";
 
 export const CartItems = () => {
   const { cartState, cartDispatch } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
 
-  const moveToWishlist = (product) =>{
-    dispatchHandler(
-      wishlistDispatch,
-      ACTION_TYPE.ADD_TO_WISHLIST,
-      product
-    );
-    dispatchHandler(
-      cartDispatch,
-      ACTION_TYPE.REMOVE_FROM_CART,
-      product
-    );
-  }
+  const moveToWishlist = (product) => {
+    dispatchHandler(wishlistDispatch, ACTION_TYPE.ADD_TO_WISHLIST, product);
+    dispatchHandler(cartDispatch, ACTION_TYPE.REMOVE_FROM_CART, product);
+  };
 
   return (
     <>
       <div className="cart-product-container">
         {cartState.map((product) => {
           const inWishlist = presentItem(wishlistState, product);
-          
+
           return (
             <div className="cart-card" key={product._id}>
               <div className="cart-img-container">

@@ -1,10 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useCart } from "../../context/cart-context";
-import { useWishlist } from "../../context/wishlist-context";
-import { ACTION_TYPE } from "../../util/actionType";
-import { dispatchHandler } from "../../util/dispatchHandler";
-import { presentItem } from "../../util/presentItem";
+import { useCart,useWishlist } from "../../context"; 
+import { ACTION_TYPE,dispatchHandler,presentItem } from "../../util";
 import { ProductCard } from "../ProductList/ProductCard";
 import "./Home.css";
 

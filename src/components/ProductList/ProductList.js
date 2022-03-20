@@ -1,16 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect , useState } from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import Filter from "./Filter";
 import "./Filter.css";
-import { useFilter } from "../../context/filter-context";
-import { filterMethod } from "../../util/filter-method";
+import { useCart, useFilter, useWishlist} from "../../context";
+import { ACTION_TYPE, dispatchHandler, filterMethod,presentItem } from "../../util/filter-method";
 import { ProductCard } from "./ProductCard";
-import { dispatchHandler } from "../../util/dispatchHandler";
-import { useCart } from "../../context/cart-context";
-import { useWishlist } from "../../context/wishlist-context";
-import { ACTION_TYPE } from "../../util/actionType";
-import { presentItem } from "../../util/presentItem";
 
 export const ProductList = () => {
   const { state } = useFilter();

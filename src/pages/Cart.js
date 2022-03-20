@@ -1,7 +1,7 @@
 import { CartItems } from "../components/Cart/CartItems";
 import { PriceCard } from "../components/Cart/PriceCard";
 import "../components/Cart/Cart.css";
-import { useCart } from "../context/cart-context";
+import { useCart } from "../context";
 import { EmptyCart } from "../components/Cart/EmptyCart";
 
 export const Cart = () => {
