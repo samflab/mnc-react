@@ -3,11 +3,11 @@ import { useCart } from "../../context/cart-context";
 export const PriceCard = () => {
     const {cartState} = useCart();
 
-    let totalPricetoPay = cartState.reduce((sum, curr)=>sum + curr.quantity * curr.price, 0)
+    const totalPricetoPay = cartState.reduce((sum, curr)=>sum + curr.quantity * curr.price, 0)
 
-    let totalMRP = cartState.reduce((mrp, curr)=> mrp + curr.quantity * curr.originalPrice, 0);
+    const totalMRP = cartState.reduce((mrp, curr)=> mrp + curr.quantity * curr.originalPrice, 0);
 
-    let totalDiscount = cartState.reduce((discount, curr)=> discount + curr.quantity * (curr.originalPrice - curr.price), 0);
+    const totalDiscount = cartState.reduce((discount, curr)=> discount + curr.quantity * (curr.originalPrice - curr.price), 0);
 
   return (
     <div className="price-details-conatiner">
