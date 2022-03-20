@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Cart.css";
 
 export const EmptyCart = () => {
   return (
@@ -13,7 +14,7 @@ export const EmptyCart = () => {
         class="shopping-bag"
       />
       <Link to="/products">
-        <button class="wishlist-btn">Lets Go Shopping</button>
+        <button class="wishlist-btn shopping-btn">Lets Go Shopping</button>
       </Link>
     </div>
   );
