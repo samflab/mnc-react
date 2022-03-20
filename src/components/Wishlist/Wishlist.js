@@ -4,7 +4,7 @@ import { useCart } from "../../context/cart-context";
 import { EmptyWishlist } from "./EmptyWishlist";
 import "./Wishlist.css";
 import { dispatchHandler } from "../../util/dispatchHandler";
-import { ACTION_TYPE } from "../../util/dispatchData";
+import { ACTION_TYPE } from "../../util/actionType";
 import { presentItem } from "../../util/presentItem";
 
 export const WishlistItems = () => {

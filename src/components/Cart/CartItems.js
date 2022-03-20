@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { dispatchHandler } from "../../util/dispatchHandler";
-import { ACTION_TYPE } from "../../util/dispatchData";
+import { ACTION_TYPE } from "../../util/actionType";
 import "./Cart.css";
 import { presentItem } from "../../util/presentItem";
 

@@ -7,7 +7,7 @@ import "./Filter.css";
 import { useFilter } from "../../context/filter-context";
 import { filterMethod } from "../../util/filter-method";
 import { useCart } from "../../context/cart-context";
-import { ACTION_TYPE } from "../../util/dispatchData";
+import { ACTION_TYPE } from "../../util/actionType";
 import { dispatchHandler } from "../../util/dispatchHandler";
 import { presentItem } from "../../util/presentItem";
 

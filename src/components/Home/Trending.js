@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
-import { ACTION_TYPE } from "../../util/dispatchData";
+import { ACTION_TYPE } from "../../util/actionType";
 import { dispatchHandler } from "../../util/dispatchHandler";
 import { presentItem } from "../../util/presentItem";
 import "./Home.css";
