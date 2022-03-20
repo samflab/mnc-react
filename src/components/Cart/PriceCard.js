@@ -4,7 +4,6 @@ export const PriceCard = () => {
     const {cartState} = useCart();
 
     let totalPricetoPay = cartState.reduce((sum, curr)=>sum + curr.quantity * curr.price, 0)
-    console.log(totalPricetoPay);
 
     let totalMRP = cartState.reduce((mrp, curr)=> mrp + curr.quantity * curr.originalPrice, 0);
 

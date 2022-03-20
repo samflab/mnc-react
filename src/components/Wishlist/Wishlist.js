@@ -7,8 +7,7 @@ import "./Wishlist.css";
 export const WishlistItems = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { cartState, cartDispatch } = useCart();
-
-  console.log(wishlistState);
+  
   return (
     <>
       <h2 class="page-heading">Wishlist</h2>
