@@ -11,7 +11,7 @@ import { useCart } from "../../context/cart-context";
 export const ProductList = () => {
   const { state } = useFilter();
   const { wishlistState, wishlistDispatch } = useWishlist();
-  const { cartDispatch } = useCart();
+  const { cartState, cartDispatch } = useCart();
 
   const [product, setProduct] = useState([]);
   const getProducts = async () => {
@@ -97,7 +97,11 @@ export const ProductList = () => {
                     })
                   }
                 >
-                  Add to Cart
+                  {
+                    cartState.find((cartItem)=>cartItem._id === filterProduct._id) ?
+                    "Go to Cart": "Add to Cart"
+                  }
+                 
                 </button>
               </div>
             </div>
