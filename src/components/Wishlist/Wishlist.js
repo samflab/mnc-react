@@ -57,7 +57,7 @@ export const WishlistItems = () => {
                   </span>
                 </div>
                 <span className="author">by {product.author}</span>
-                <div style={{ marginBlock: "1rem" }}>
+                <div className="price-div">
                   <span className="price-tag">₹{product.price}</span>
                   <del className="price-tag original">
                     ₹{product.originalPrice}

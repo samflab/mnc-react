@@ -49,6 +49,10 @@
   width: 15.5rem;
 }
 
+.price-div {
+  margin: 0 1rem;
+}
+
 .product-img {
   height: 20rem;
   width: 15rem;

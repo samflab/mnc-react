@@ -84,7 +84,7 @@ export const ProductList = () => {
                   </span>
                 </div>
                 <span class="author">by {filterProduct.author}</span>
-                <div style={{ marginBlock: "1rem" }}>
+                <div class="price-div">
                   <span class="price-tag">₹{filterProduct.price}</span>
                   <del class="price-tag original">
                     ₹{filterProduct.originalPrice}

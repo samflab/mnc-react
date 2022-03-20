@@ -8,7 +8,7 @@ export const Cart = () => {
   const { cartState } = useCart();
   return (
     <>
-      <h3 className="page-heading cart-heading component-div" style={{padding:"1.5rem"}}>Cart</h3>
+      <h3 className="page-heading cart-heading">Cart</h3>
       {cartState.length === 0 ? (
         <EmptyCart />
       ) : (

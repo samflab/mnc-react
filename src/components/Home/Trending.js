@@ -5,6 +5,7 @@ import { useWishlist } from "../../context/wishlist-context";
 import { ACTION_TYPE } from "../../util/dispatchData";
 import { dispatchHandler } from "../../util/dispatchHandler";
 import { presentItem } from "../../util/presentItem";
+import "./Home.css";
 
 export const Trending = () => {
   const [trending, setTrending] = useState([]);
@@ -73,7 +74,7 @@ export const Trending = () => {
                   </span>
                 </div>
                 <span class="author">by {product.author}</span>
-                <div style={{ marginBlock: "1rem" }}>
+                <div class="price-div">
                   <span class="price-tag">₹{product.price}</span>
                   <del class="price-tag original">₹{product.originalPrice}</del>
                   <span class="price-tag discount">
