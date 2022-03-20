@@ -10,3 +10,7 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+button[disabled]{
+  cursor: default;
+}

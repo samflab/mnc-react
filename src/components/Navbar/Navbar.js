@@ -4,11 +4,12 @@ import SideNav from "react-simple-sidenav";
 import "../../App.css";
 import "./Navbar.css";
 import { titleStyle, itemStyle } from "./sidebar-style";
-import { useWishlist } from "../../context/wishlist-context";
+import { useCart, useWishlist } from "../../context";
 
 export const Navbar = () => {
   const [showSideNav, setShowSideNav] = useState(false);
-  const {wishlistState} = useWishlist();
+  const { wishlistState } = useWishlist();
+  const { cartState } = useCart();
 
   const routeData = [
     {
@@ -31,11 +32,7 @@ export const Navbar = () => {
         "Wishlist"
       ) : (
         <i class="far fa-bookmark icon-link-3pt">
-          
-          <span className="badge">
-          {wishlistState.length}
-
-          </span>
+          <span className="badge">{wishlistState.length}</span>
         </i>
       ),
     },
@@ -45,7 +42,9 @@ export const Navbar = () => {
       componentName: showSideNav ? (
         "Cart"
       ) : (
-        <i class="fas fa-shopping-cart icon-link-3pt"></i>
+        <i class="fas fa-shopping-cart icon-link-3pt">
+          <span className="badge">{cartState.length}</span>
+        </i>
       ),
     },
     {
@@ -103,7 +102,6 @@ export const Navbar = () => {
           <input type="search" class="search" placeholder="Search.." />
         </div>
       </header>
-      
     </>
   );
 };

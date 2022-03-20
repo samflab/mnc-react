@@ -1,12 +1,12 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import "./Cart.css";
 
-export const EmptyWishlist = () => {
+export const EmptyCart = () => {
   return (
     <div class="page-heading-center">
-      <h2>Empty Wishlist</h2>
+      <h2>Your cart is empty</h2>
       <br />
-      <p class="wishlist-para">Bookmark your manga now!</p>
+      <p class="wishlist-para">Fill in your shopping bag now!</p>
 
       <img
         src="https://cdn-icons-png.flaticon.com/512/743/743131.png"

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Filter.css";
-import { useFilter } from "../../context/filter-context";
+import { useFilter } from "../../context";
 import axios from "axios";
+
 export default function Filter() {
   const [showFilter, setShowFilter] = useState(false);
   const [categoryData, setCategoryData] = useState([]);
