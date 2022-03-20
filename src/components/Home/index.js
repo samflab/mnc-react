@@ -1,3 +1,3 @@
-export { Category } from "../components/Home/Category";
-export { Hero } from "../components/Home/Hero";
-export { Trending } from "../components/Home/Trending";
+export { Category} from "./Category";
+export { Hero } from "./Hero";
+export { Trending } from "./Trending";

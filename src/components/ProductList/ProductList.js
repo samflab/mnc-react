@@ -3,7 +3,7 @@ import axios from "axios";
 import Filter from "./Filter";
 import "./Filter.css";
 import { useCart, useFilter, useWishlist} from "../../context";
-import { ACTION_TYPE, dispatchHandler, filterMethod,presentItem } from "../../util/filter-method";
+import { ACTION_TYPE, dispatchHandler, filterMethod,presentItem } from "../../util";
 import { ProductCard } from "./ProductCard";
 
 export const ProductList = () => {
