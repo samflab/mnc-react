@@ -4,6 +4,7 @@ import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { ACTION_TYPE } from "../../util/dispatchData";
 import { dispatchHandler } from "../../util/dispatchHandler";
+import { presentItem } from "../../util/presentItem";
 
 export const Trending = () => {
   const [trending, setTrending] = useState([]);
@@ -28,12 +29,8 @@ export const Trending = () => {
       <p class="trending-sub">Top reads this week</p>
       <div class="trending">
         {trending.map((product) => {
-          const inWishlist = wishlistState.find(
-            (wishlistItem) => wishlistItem._id === product._id
-          );
-          const inCart = cartState.find(
-            (cartItem) => cartItem._id === product._id
-          );
+          const inWishlist = presentItem(wishlistState, product);
+          const inCart = presentItem(cartState, product);
           return (
             <div class="product" key={product.id}>
               <div class="product-img">

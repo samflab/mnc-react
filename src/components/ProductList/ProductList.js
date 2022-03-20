@@ -9,6 +9,7 @@ import { filterMethod } from "../../util/filter-method";
 import { useCart } from "../../context/cart-context";
 import { ACTION_TYPE } from "../../util/dispatchData";
 import { dispatchHandler } from "../../util/dispatchHandler";
+import { presentItem } from "../../util/presentItem";
 
 export const ProductList = () => {
   const { state } = useFilter();
@@ -34,12 +35,8 @@ export const ProductList = () => {
       <Filter />
       <div className="product-list-container">
         {filterData.map((filterProduct) => {
-          const inWishlist = wishlistState.find(
-            (wishlistItem) => wishlistItem._id === filterProduct._id
-          );
-          const inCart = cartState.find(
-            (cartItem) => cartItem._id === filterProduct._id
-          );
+          const inWishlist = presentItem(wishlistState, filterProduct);
+          const inCart = presentItem(cartState, filterProduct);
           return (
             <div class="product" key={filterProduct.id}>
               <div class="product-img">

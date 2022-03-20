@@ -5,6 +5,7 @@ import { EmptyWishlist } from "./EmptyWishlist";
 import "./Wishlist.css";
 import { dispatchHandler } from "../../util/dispatchHandler";
 import { ACTION_TYPE } from "../../util/dispatchData";
+import { presentItem } from "../../util/presentItem";
 
 export const WishlistItems = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
@@ -29,9 +30,7 @@ export const WishlistItems = () => {
       {wishlistState.length === 0 ? <EmptyWishlist /> : ""}
       <div className="wishlist-container">
         {wishlistState.map((product) => {
-          const inCart = cartState.find(
-            (cartItem) => cartItem._id === product._id
-          );
+          const inCart = presentItem(cartState, product);
           return (
             <div className="product" key={product._id}>
               <div className="product-img">

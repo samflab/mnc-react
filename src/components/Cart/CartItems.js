@@ -4,6 +4,7 @@ import { useWishlist } from "../../context/wishlist-context";
 import { dispatchHandler } from "../../util/dispatchHandler";
 import { ACTION_TYPE } from "../../util/dispatchData";
 import "./Cart.css";
+import { presentItem } from "../../util/presentItem";
 
 export const CartItems = () => {
   const { cartState, cartDispatch } = useCart();
@@ -26,9 +27,7 @@ export const CartItems = () => {
     <>
       <div className="cart-product-container">
         {cartState.map((product) => {
-          const inWishlist = wishlistState.find(
-            (wishlistItem) => wishlistItem._id === product._id
-          );
+          const inWishlist = presentItem(wishlistState, product);
           
           return (
             <div className="cart-card" key={product._id}>
