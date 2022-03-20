@@ -46,6 +46,7 @@ button[disabled] {
   cursor: default;
 }
 
+
 .cart-div {
   display: flex;
   justify-content: space-between;
