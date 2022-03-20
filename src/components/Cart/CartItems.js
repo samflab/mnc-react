@@ -1,5 +1,5 @@
 import React from "react";
-import { useCart,useWishlist } from "../../context";
+import { useCart, useWishlist } from "../../context";
 import { dispatchHandler, ACTION_TYPE, presentItem } from "../../util";
 import "./Cart.css";
 
@@ -44,19 +44,6 @@ export const CartItems = () => {
 
                 <div className="quantity">
                   <button
-                    className="increase-quantity"
-                    onClick={() =>
-                      dispatchHandler(
-                        cartDispatch,
-                        ACTION_TYPE.INCREASE_QUANTITY,
-                        product
-                      )
-                    }
-                  >
-                    +
-                  </button>
-                  <span className="quantity-wt">{product.quantity}</span>
-                  <button
                     className="decrease-quantity"
                     onClick={() =>
                       dispatchHandler(
@@ -68,6 +55,20 @@ export const CartItems = () => {
                     disabled={product.quantity === 1}
                   >
                     -
+                  </button>
+
+                  <span className="quantity-wt">{product.quantity}</span>
+                  <button
+                    className="increase-quantity"
+                    onClick={() =>
+                      dispatchHandler(
+                        cartDispatch,
+                        ACTION_TYPE.INCREASE_QUANTITY,
+                        product
+                      )
+                    }
+                  >
+                    +
                   </button>
                 </div>
 
