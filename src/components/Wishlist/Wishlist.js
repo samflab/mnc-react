@@ -3,11 +3,13 @@ import { useWishlist } from "../../context/wishlist-context";
 import { useCart } from "../../context/cart-context";
 import { EmptyWishlist } from "./EmptyWishlist";
 import "./Wishlist.css";
+import { dispatchHandler } from "../../util/dispatchHandler";
+import { ACTION_TYPE } from "../../util/dispatchData";
 
 export const WishlistItems = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { cartState, cartDispatch } = useCart();
-  
+
   return (
     <>
       <h2 class="page-heading">Wishlist</h2>
@@ -22,10 +24,11 @@ export const WishlistItems = () => {
                 <span
                   className=""
                   onClick={() =>
-                    wishlistDispatch({
-                      type: "REMOVE_FROM_WISHLIST",
-                      payload: product,
-                    })
+                    dispatchHandler(
+                      wishlistDispatch,
+                      ACTION_TYPE.REMOVE_FROM_WISHLIST,
+                      product
+                    )
                   }
                 >
                   <i className="far fa-times-circle close bookmark"></i>
@@ -57,14 +60,16 @@ export const WishlistItems = () => {
                       : false
                   }
                   onClick={() => {
-                    cartDispatch({
-                      type: "ADD_TO_CART",
-                      payload: product,
-                    });
-                    wishlistDispatch({
-                      type: "REMOVE_FROM_WISHLIST",
-                      payload: product,
-                    });
+                    dispatchHandler(
+                      cartDispatch,
+                      ACTION_TYPE.ADD_TO_CART,
+                      product
+                    );
+                    dispatchHandler(
+                      wishlistDispatch,
+                      ACTION_TYPE.REMOVE_FROM_WISHLIST,
+                      product
+                    );
                   }}
                 >
                   {cartState.find((cartItem) => cartItem._id === product._id)

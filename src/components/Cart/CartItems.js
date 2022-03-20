@@ -1,7 +1,10 @@
 import React from "react";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
+import { dispatchHandler } from "../../util/dispatchHandler";
+import { ACTION_TYPE } from "../../util/dispatchData";
 import "./Cart.css";
+
 export const CartItems = () => {
   const { cartState, cartDispatch } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
@@ -21,10 +24,11 @@ export const CartItems = () => {
                 <i
                   className="fas fa-trash-alt delete"
                   onClick={() =>
-                    cartDispatch({
-                      type: "REMOVE_FROM_CART",
-                      payload: product,
-                    })
+                    dispatchHandler(
+                      cartDispatch,
+                      ACTION_TYPE.REMOVE_FROM_CART,
+                      product
+                    )
                   }
                 ></i>
               </div>
@@ -37,10 +41,11 @@ export const CartItems = () => {
                   <button
                     className="increase-quantity"
                     onClick={() =>
-                      cartDispatch({
-                        type: "INCREASE_QUANTITY",
-                        payload: product,
-                      })
+                      dispatchHandler(
+                        cartDispatch,
+                        ACTION_TYPE.INCREASE_QUANTITY,
+                        product
+                      )
                     }
                   >
                     +
@@ -49,10 +54,11 @@ export const CartItems = () => {
                   <button
                     className="decrease-quantity"
                     onClick={() =>
-                      cartDispatch({
-                        type: "DECREASE_QUANTITY",
-                        payload: product,
-                      })
+                      dispatchHandler(
+                        cartDispatch,
+                        ACTION_TYPE.DECREASE_QUANTITY,
+                        product
+                      )
                     }
                     disabled={product.quantity === 1 ? true : false}
                   >
@@ -83,14 +89,16 @@ export const CartItems = () => {
                       : false
                   }
                   onClick={() => {
-                    wishlistDispatch({
-                      type: "ADD_TO_WISHLIST",
-                      payload: product,
-                    });
-                    cartDispatch({
-                      type: "REMOVE_FROM_CART",
-                      payload: product,
-                    });
+                    dispatchHandler(
+                      wishlistDispatch,
+                      ACTION_TYPE.ADD_TO_WISHLIST,
+                      product
+                    );
+                    dispatchHandler(
+                      cartDispatch,
+                      ACTION_TYPE.REMOVE_FROM_CART,
+                      product
+                    );
                   }}
                 >
                   {wishlistState.find(

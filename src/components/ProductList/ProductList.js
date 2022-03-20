@@ -7,6 +7,8 @@ import "./Filter.css";
 import { useFilter } from "../../context/filter-context";
 import { filterMethod } from "../../util/filter-method";
 import { useCart } from "../../context/cart-context";
+import { ACTION_TYPE } from "../../util/dispatchData";
+import { dispatchHandler } from "../../util/dispatchHandler";
 
 export const ProductList = () => {
   const { state } = useFilter();
@@ -47,10 +49,11 @@ export const ProductList = () => {
                     key={filterProduct._id}
                     className=""
                     onClick={() =>
-                      wishlistDispatch({
-                        type: "REMOVE_FROM_WISHLIST",
-                        payload: filterProduct,
-                      })
+                      dispatchHandler(
+                        wishlistDispatch,
+                        ACTION_TYPE.REMOVE_FROM_WISHLIST,
+                        filterProduct
+                      )
                     }
                   >
                     <i className="far fa-times-circle close bookmark"></i>
@@ -60,10 +63,11 @@ export const ProductList = () => {
                     key={filterProduct._id}
                     class=""
                     onClick={() =>
-                      wishlistDispatch({
-                        type: "ADD_TO_WISHLIST",
-                        payload: filterProduct,
-                      })
+                      dispatchHandler(
+                        wishlistDispatch,
+                        ACTION_TYPE.ADD_TO_WISHLIST,
+                        filterProduct
+                      )
                     }
                   >
                     <i class="far fa-bookmark bookmark"></i>
@@ -91,17 +95,18 @@ export const ProductList = () => {
                 <button
                   class="add-to-cart"
                   onClick={() =>
-                    cartDispatch({
-                      type: "ADD_TO_CART",
-                      payload: filterProduct,
-                    })
+                    dispatchHandler(
+                      cartDispatch,
+                      ACTION_TYPE.ADD_TO_CART,
+                      filterProduct
+                    )
                   }
                 >
-                  {
-                    cartState.find((cartItem)=>cartItem._id === filterProduct._id) ?
-                    "Go to Cart": "Add to Cart"
-                  }
-                 
+                  {cartState.find(
+                    (cartItem) => cartItem._id === filterProduct._id
+                  )
+                    ? "Go to Cart"
+                    : "Add to Cart"}
                 </button>
               </div>
             </div>
