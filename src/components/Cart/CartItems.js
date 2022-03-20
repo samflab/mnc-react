@@ -4,11 +4,10 @@ import { useWishlist } from "../../context/wishlist-context";
 import "./Cart.css";
 export const CartItems = () => {
   const { cartState, cartDispatch } = useCart();
-  const { wishlistDispatch } = useWishlist();
-  
+  const { wishlistState, wishlistDispatch } = useWishlist();
+
   return (
     <>
-
       <div className="cart-product-container">
         {cartState.map((product) => {
           return (
@@ -76,6 +75,13 @@ export const CartItems = () => {
                 </div>
                 <button
                   className="wishlist-btn outline-btn btn"
+                  disabled={
+                    wishlistState.find(
+                      (wishlistItem) => wishlistItem._id === product._id
+                    )
+                      ? true
+                      : false
+                  }
                   onClick={() => {
                     wishlistDispatch({
                       type: "ADD_TO_WISHLIST",
@@ -84,11 +90,14 @@ export const CartItems = () => {
                     cartDispatch({
                       type: "REMOVE_FROM_CART",
                       payload: product,
-                    })
-                  }
-                }
+                    });
+                  }}
                 >
-                  Move to Wishlist
+                  {wishlistState.find(
+                    (wishlistItem) => wishlistItem._id === product._id
+                  )
+                    ? "Already in Wishlist"
+                    : "Move to Wishlist"}
                 </button>
               </div>
             </div>
