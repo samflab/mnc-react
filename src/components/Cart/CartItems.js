@@ -13,6 +13,10 @@ export const CartItems = () => {
     <>
       <div className="cart-product-container">
         {cartState.map((product) => {
+          const inWishlist = wishlistState.find(
+            (wishlistItem) => wishlistItem._id === product._id
+          );
+          
           return (
             <div className="cart-card" key={product._id}>
               <div className="cart-img-container">
@@ -60,7 +64,7 @@ export const CartItems = () => {
                         product
                       )
                     }
-                    disabled={product.quantity === 1 ? true : false}
+                    disabled={product.quantity === 1}
                   >
                     -
                   </button>
@@ -81,13 +85,7 @@ export const CartItems = () => {
                 </div>
                 <button
                   className="wishlist-btn outline-btn btn"
-                  disabled={
-                    wishlistState.find(
-                      (wishlistItem) => wishlistItem._id === product._id
-                    )
-                      ? true
-                      : false
-                  }
+                  disabled={inWishlist}
                   onClick={() => {
                     dispatchHandler(
                       wishlistDispatch,
@@ -101,11 +99,7 @@ export const CartItems = () => {
                     );
                   }}
                 >
-                  {wishlistState.find(
-                    (wishlistItem) => wishlistItem._id === product._id
-                  )
-                    ? "Already in Wishlist"
-                    : "Move to Wishlist"}
+                  {inWishlist ? "Already in Wishlist" : "Move to Wishlist"}
                 </button>
               </div>
             </div>

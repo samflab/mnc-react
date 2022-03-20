@@ -34,6 +34,12 @@ export const ProductList = () => {
       <Filter />
       <div className="product-list-container">
         {filterData.map((filterProduct) => {
+          const inWishlist = wishlistState.find(
+            (wishlistItem) => wishlistItem._id === filterProduct._id
+          );
+          const inCart = cartState.find(
+            (cartItem) => cartItem._id === filterProduct._id
+          );
           return (
             <div class="product" key={filterProduct.id}>
               <div class="product-img">
@@ -42,9 +48,7 @@ export const ProductList = () => {
                   alt={filterProduct.title}
                   class="img"
                 />
-                {wishlistState.find(
-                  (wishlistItem) => wishlistItem._id === filterProduct._id
-                ) ? (
+                {inWishlist ? (
                   <span
                     key={filterProduct._id}
                     className=""
@@ -101,12 +105,9 @@ export const ProductList = () => {
                       filterProduct
                     )
                   }
+                  disabled={inCart}
                 >
-                  {cartState.find(
-                    (cartItem) => cartItem._id === filterProduct._id
-                  )
-                    ? "Go to Cart"
-                    : "Add to Cart"}
+                  {inCart ? "Go to Cart" : "Add to Cart"}
                 </button>
               </div>
             </div>

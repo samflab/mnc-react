@@ -17,6 +17,9 @@ export const WishlistItems = () => {
       {wishlistState.length === 0 ? <EmptyWishlist /> : ""}
       <div className="wishlist-container">
         {wishlistState.map((product) => {
+          const inCart = cartState.find(
+            (cartItem) => cartItem._id === product._id
+          );
           return (
             <div className="product" key={product._id}>
               <div className="product-img">
@@ -54,11 +57,7 @@ export const WishlistItems = () => {
                 </div>
                 <button
                   className="add-to-cart"
-                  disabled={
-                    cartState.find((cartItem) => cartItem._id === product._id)
-                      ? true
-                      : false
-                  }
+                  disabled={inCart}
                   onClick={() => {
                     dispatchHandler(
                       cartDispatch,
@@ -72,9 +71,7 @@ export const WishlistItems = () => {
                     );
                   }}
                 >
-                  {cartState.find((cartItem) => cartItem._id === product._id)
-                    ? "Already in Cart"
-                    : "Move to Cart"}
+                  {inCart ? "Already in Cart" : "Move to Cart"}
                 </button>
               </div>
             </div>
