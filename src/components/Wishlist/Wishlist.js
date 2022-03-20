@@ -53,18 +53,20 @@ export const WishlistItems = () => {
                 <button
                   className="add-to-cart"
                   disabled={
-                    cartState.find(
-                      (cartItem) => cartItem._id === product._id
-                    )
+                    cartState.find((cartItem) => cartItem._id === product._id)
                       ? true
                       : false
                   }
-                  onClick={() =>
+                  onClick={() => {
                     cartDispatch({
                       type: "ADD_TO_CART",
                       payload: product,
-                    })
-                  }
+                    });
+                    wishlistDispatch({
+                      type: "REMOVE_FROM_WISHLIST",
+                      payload: product,
+                    });
+                  }}
                 >
                   {cartState.find((cartItem) => cartItem._id === product._id)
                     ? "Already in Cart"
