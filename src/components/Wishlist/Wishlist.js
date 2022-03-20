@@ -10,6 +10,18 @@ export const WishlistItems = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
   const { cartState, cartDispatch } = useCart();
 
+  const moveToCart = (product) => {
+    dispatchHandler(
+      cartDispatch,
+      ACTION_TYPE.ADD_TO_CART,
+      product
+    );
+    dispatchHandler(
+      wishlistDispatch,
+      ACTION_TYPE.REMOVE_FROM_WISHLIST,
+      product
+    );
+  }
   return (
     <>
       <h2 class="page-heading">Wishlist</h2>
@@ -58,18 +70,7 @@ export const WishlistItems = () => {
                 <button
                   className="add-to-cart"
                   disabled={inCart}
-                  onClick={() => {
-                    dispatchHandler(
-                      cartDispatch,
-                      ACTION_TYPE.ADD_TO_CART,
-                      product
-                    );
-                    dispatchHandler(
-                      wishlistDispatch,
-                      ACTION_TYPE.REMOVE_FROM_WISHLIST,
-                      product
-                    );
-                  }}
+                  onClick={() => moveToCart(product)}
                 >
                   {inCart ? "Already in Cart" : "Move to Cart"}
                 </button>

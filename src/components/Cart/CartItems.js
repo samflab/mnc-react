@@ -9,6 +9,19 @@ export const CartItems = () => {
   const { cartState, cartDispatch } = useCart();
   const { wishlistState, wishlistDispatch } = useWishlist();
 
+  const moveToWishlist = (product) =>{
+    dispatchHandler(
+      wishlistDispatch,
+      ACTION_TYPE.ADD_TO_WISHLIST,
+      product
+    );
+    dispatchHandler(
+      cartDispatch,
+      ACTION_TYPE.REMOVE_FROM_CART,
+      product
+    );
+  }
+
   return (
     <>
       <div className="cart-product-container">
@@ -86,18 +99,7 @@ export const CartItems = () => {
                 <button
                   className="wishlist-btn outline-btn btn"
                   disabled={inWishlist}
-                  onClick={() => {
-                    dispatchHandler(
-                      wishlistDispatch,
-                      ACTION_TYPE.ADD_TO_WISHLIST,
-                      product
-                    );
-                    dispatchHandler(
-                      cartDispatch,
-                      ACTION_TYPE.REMOVE_FROM_CART,
-                      product
-                    );
-                  }}
+                  onClick={() => moveToWishlist(product)}
                 >
                   {inWishlist ? "Already in Wishlist" : "Move to Wishlist"}
                 </button>
