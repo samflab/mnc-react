@@ -36,19 +36,29 @@ export const ProductList = () => {
       <Filter />
       <div className="product-list-container">
         {filterData.map((filterProduct) => {
+          const {
+            _id,
+            img,
+            title,
+            rating,
+            author,
+            price,
+            originalPrice,
+            discount,
+          } = filterProduct;
           const inWishlist = presentItem(wishlistState, filterProduct);
           const inCart = presentItem(cartState, filterProduct);
           return (
             <ProductCard
-              key={filterProduct._id}
-              id={filterProduct._id}
-              img={filterProduct.img}
-              title={filterProduct.title}
-              rating={filterProduct.rating}
-              author={filterProduct.author}
-              price={filterProduct.price}
-              originalPrice={filterProduct.originalPrice}
-              discount={filterProduct.discount}
+              key={_id}
+              id={_id}
+              img={img}
+              title={title}
+              rating={rating}
+              author={author}
+              price={price}
+              originalPrice={originalPrice}
+              discount={discount}
               inWishlist={inWishlist}
               inCart={inCart}
               addToWishlist={() =>

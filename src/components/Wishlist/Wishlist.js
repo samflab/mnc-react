@@ -19,18 +19,28 @@ export const WishlistItems = () => {
       {wishlistState.length === 0 ? <EmptyWishlist /> : ""}
       <div className="wishlist-container">
         {wishlistState.map((product) => {
+          const {
+            _id,
+            img,
+            title,
+            rating,
+            author,
+            price,
+            originalPrice,
+            discount,
+          } = product;
           const inCart = presentItem(cartState, product);
           return (
             <ProductCard
-              key={product._id}
-              id={product._id}
-              img={product.img}
-              title={product.title}
-              rating={product.rating}
-              author={product.author}
-              price={product.price}
-              originalPrice={product.originalPrice}
-              discount={product.discount}
+              key={_id}
+              id={_id}
+              img={img}
+              title={title}
+              rating={rating}
+              author={author}
+              price={price}
+              originalPrice={originalPrice}
+              discount={discount}
               inCart={inCart}
               addToWishlist={() =>
                 dispatchHandler(
