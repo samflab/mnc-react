@@ -3,18 +3,18 @@ import "./Cart.css";
 
 export const EmptyCart = () => {
   return (
-    <div class="page-heading-center">
+    <div className="page-heading-center">
       <h2>Your cart is empty</h2>
       <br />
-      <p class="wishlist-para">Fill in your shopping bag now!</p>
+      <p className="wishlist-para">Fill in your shopping bag now!</p>
 
       <img
         src="https://cdn-icons-png.flaticon.com/512/743/743131.png"
         alt="shopping bag"
-        class="shopping-bag"
+        className="shopping-bag"
       />
       <Link to="/products">
-        <button class="wishlist-btn shopping-btn">Lets Go Shopping</button>
+        <button className="wishlist-btn shopping-btn">Lets Go Shopping</button>
       </Link>
     </div>
   );

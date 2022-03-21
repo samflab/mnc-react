@@ -11,7 +11,7 @@ export const WishlistItems = () => {
 
   return (
     <>
-      <h2 class="page-heading">Wishlist</h2>
+      <h2 className="page-heading">Wishlist</h2>
 
       {wishlistState.length === 0 ? <EmptyWishlist /> : ""}
       <div className="wishlist-container">

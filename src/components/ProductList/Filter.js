@@ -26,8 +26,8 @@ export default function Filter() {
 
   return (
     <>
-      <button onClick={() => setShowFilter(() => !showFilter)} class="filter">
-        <i class="fas fa-sort"></i> Filters
+      <button onClick={() => setShowFilter(() => !showFilter)} className="filter">
+        <i className="fas fa-sort"></i> Filters
       </button>
       {showFilter ? (
         <div className="filter-div">

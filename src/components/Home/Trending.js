@@ -24,9 +24,9 @@ export const Trending = () => {
 
   return (
     <div>
-      <h2 class="trending-header">Trending</h2>
-      <p class="trending-sub">Top reads this week</p>
-      <div class="trending">
+      <h2 className="trending-header">Trending</h2>
+      <p className="trending-sub">Top reads this week</p>
+      <div className="trending">
         {trending.map((product) => {
           const {
             _id,

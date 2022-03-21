@@ -47,16 +47,16 @@ export const ProductCard = (props) => {
   };
 
   return (
-    <div class="product" key={id}>
-      <div class="product-img">
-        <img src={img} alt={title} class="img" />
+    <div className="product" key={id}>
+      <div className="product-img">
+        <img src={img} alt={title} className="img" />
         {atWishlist ? (
           <span onClick={() => removeFromWishlist()}>
             <i className="far fa-times-circle close bookmark"></i>
           </span>
         ) : !inWishlist ? (
           <span onClick={() => addToWishlist()}>
-            <i class="far fa-bookmark bookmark"></i>
+            <i className="far fa-bookmark bookmark"></i>
           </span>
         ) : (
           <span onClick={() => removeFromWishlist()}>
@@ -64,22 +64,22 @@ export const ProductCard = (props) => {
           </span>
         )}
       </div>
-      <div class="card-body">
-        <div class="product-name-container">
-          <span class="product-name">{title}</span>
+      <div className="card-body">
+        <div className="product-name-container">
+          <span className="product-name">{title}</span>
 
-          <span class="rating" role="img">
+          <span className="rating" role="img">
             {rating}/5⭐
           </span>
         </div>
-        <span class="author">by {author}</span>
-        <div class="price-div">
-          <span class="price-tag">₹{price}</span>
-          <del class="price-tag original">₹{originalPrice}</del>
-          <span class="price-tag discount">{discount}% Off</span>
+        <span className="author">by {author}</span>
+        <div className="price-div">
+          <span className="price-tag">₹{price}</span>
+          <del className="price-tag original">₹{originalPrice}</del>
+          <span className="price-tag discount">{discount}% Off</span>
         </div>
         <button
-          class="add-to-cart"
+          className="add-to-cart"
           onClick={() => clickHandler()}
           disabled={inCart}
         >

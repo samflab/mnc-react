@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 
 export const EmptyWishlist = () => {
   return (
-    <div class="page-heading-center">
+    <div className="page-heading-center">
       <h2>Empty Wishlist</h2>
       <br />
-      <p class="wishlist-para">Bookmark your manga now!</p>
+      <p className="wishlist-para">Bookmark your manga now!</p>
 
       <img
         src="https://cdn-icons-png.flaticon.com/512/743/743131.png"
         alt="shopping bag"
-        class="shopping-bag"
+        className="shopping-bag"
       />
       <Link to="/products">
-        <button class="wishlist-btn shopping-btn">Lets Go Shopping</button>
+        <button className="wishlist-btn shopping-btn">Lets Go Shopping</button>
       </Link>
     </div>
   );
