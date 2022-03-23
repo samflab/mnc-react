@@ -1,15 +1,23 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, {useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import SideNav from "react-simple-sidenav";
 import "../../App.css";
 import "./Navbar.css";
 import { titleStyle, itemStyle } from "./sidebar-style";
-import { useCart, useWishlist } from "../../context";
+import { useAuth, useCart, useWishlist } from "../../context";
+import { userLogout } from "../../util/auth-methods";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const [showSideNav, setShowSideNav] = useState(false);
   const { wishlistState } = useWishlist();
   const { cartState } = useCart();
+  const { authState, authDispatch } = useAuth();
+
+  const logoutHandler = () => {
+    userLogout(authDispatch);
+    navigate("/login");
+  };
 
   const routeData = [
     {
@@ -51,6 +59,11 @@ export const Navbar = () => {
       path: "/login",
       componentName: showSideNav ? (
         <button className="login-btn">Login</button>
+      ) : authState.isLoggedIn ? (
+        <>
+          <span>Hello {authState.userData.firstName}</span>
+          <button onClick={logoutHandler}>Logout</button>
+        </>
       ) : (
         <i className="fas fa-user icon-link-3pt"></i>
       ),
@@ -66,9 +79,9 @@ export const Navbar = () => {
         <div className="header-nav-3pt">
           <nav>
             <ul className="header-menu-3pt">
-              {routeData.map((link) => {
+              {routeData.map((link, id) => {
                 return (
-                  <Link to={link.path}>
+                  <Link to={link.path} key={id}>
                     <li className="menu-item-3pt">{link.componentName}</li>
                   </Link>
                 );

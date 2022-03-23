@@ -1,0 +1,51 @@
+.login-container,
+.signup-container {
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8rem;
+  box-shadow: 0px 2px 5px 0px gray;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.signup-container {
+  margin-top: 5rem;
+}
+
+.firstname,
+.lastname,
+.email,
+.password {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+.auth-btn {
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.auth-form-links {
+  margin-bottom: 0.5rem;
+}
+
+.signup-link-login,
+.password-link,
+.login-link {
+  margin-left: 0.5rem;
+}
+
+@media screen and (max-width: 1020px) {
+  .login-container,
+  .signup-container {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .login-container,
+  .signup-container {
+    width: 80%;
+  }
+}
