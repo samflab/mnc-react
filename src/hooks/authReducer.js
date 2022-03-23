@@ -26,6 +26,14 @@ export const authReducer = (state, action) => {
         isLoggedIn: true,
         loading: false,
       };
+    case ACTION_TYPE.SIGNUP:
+      return{
+        ...initialState,
+        userData:action.payload.data.createdUser,
+        encodedToken: action.payload.data.encodedToken,
+        isLoggedIn: true,
+        loading: false,
+      }
     case ACTION_TYPE.FAILURE:
       return {
         ...initialState,
