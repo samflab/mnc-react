@@ -3,7 +3,12 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import { makeServer } from "./server";
-import {AuthProvider, CartProvider, FilterProvider, WishlistProvider} from "./context"
+import {
+  AuthProvider,
+  CartProvider,
+  FilterProvider,
+  WishlistProvider,
+} from "./context";
 
 // Call make Server
 makeServer();

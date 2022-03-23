@@ -1,4 +1,4 @@
-export { useCart } from "./cart-context";
-export { useFilter } from "./filter-context";
-export { useWishlist } from "./wishlist-context";
-export { useAuth } from "./auth-context";
+export { useCart, CartProvider } from "./cart-context";
+export { useFilter, FilterProvider } from "./filter-context";
+export { useWishlist, WishlistProvider } from "./wishlist-context";
+export { useAuth, AuthProvider } from "./auth-context";
