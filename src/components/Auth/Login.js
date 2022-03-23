@@ -4,12 +4,16 @@ import "./Auth.css";
 import { useAuth } from "../../context";
 import { userLogin } from "../../util/auth-methods";
 import { ACTION_TYPE } from "../../util";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Loader } from "../Loader";
+
 export const Login = () => {
   const navigate = useNavigate();
   const email = useRef("");
   const password = useRef("");
   const { authState, authDispatch } = useAuth();
- 
+
   const loginSubmitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -19,21 +23,27 @@ export const Login = () => {
       });
 
       if (response.status === 200) {
-        //will replace it with toast msg
-        alert("login successful");
         navigate("/");
-      } else {
-        alert("login failed");
-        authDispatch({ type: ACTION_TYPE.FAILURE, payload: response });
+      }
+
+      if (!response?.data.foundUser) {
+        throw Error("No user found");
       }
     } catch (err) {
-      console.error("Error", err);
+      toast.error("Login failed! Incorrect email or password.");
+      authDispatch({
+        type: ACTION_TYPE.FAILURE,
+        payload: {
+          loading: false,
+        },
+      });
+      navigate("/login");
     }
   };
   return (
     <div>
+      {authState.loading && <Loader />}
       <div className="login-container">
-        {authState.loading && <h2>Loading...</h2>}
         <form action="" className="login-form">
           <div>
             <label htmlFor="email" className="form-label">

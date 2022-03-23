@@ -3,6 +3,10 @@ import { useRef } from "react";
 import "./Auth.css";
 import { useAuth } from "../../context";
 import { userSignup } from "../../util/auth-methods";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Loader } from "../Loader";
+import { ACTION_TYPE } from "../../util";
 
 export const Signup = () => {
   const firstname = useRef("");
@@ -10,40 +14,49 @@ export const Signup = () => {
   const email = useRef("");
   const password = useRef("");
   const navigate = useNavigate();
-  const { authDispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
 
   const signupHandler = async (e) => {
     e.preventDefault();
-    try{
-    const response = await userSignup(authDispatch, {
-      firstName: firstname.current.value,
-      lastName: lastname.current.value,
-      email: email.current.value,
-      password: password.current.value,
-    });
-    console.log(response)
-    if(response.status === 201){
-      alert("user created successfully");
+    try {
+      const response = await userSignup(
+        authDispatch,
+        {
+          firstName: firstname.current.value,
+          lastName: lastname.current.value,
+          email: email.current.value,
+          password: password.current.value,
+        },
+        toast
+      );
+
+      if (response.status === 201 || 200) {
+        toast.success("Successfully created a new account.");
         navigate("/");
+      }
+
+      if (!response?.data.createdUser) {
+        throw Error("Can't create account");
+      }
+    } catch (err) {
+      authDispatch({
+        type: ACTION_TYPE.FAILURE,
+        payload: {
+          loading: false,
+        },
+      });
+      toast.error("Unable to create a new user.");
+      navigate("/signup");
     }
-    else if(response.status === 422){
-      alert("email already exists");      
-    }
-    else{
-      alert("unforseen error occured")
-    }
-  }
-  catch(err){
-    console.error("error", err);
-  }
   };
 
   return (
     <div>
+      {authState.loading && <Loader />}
       <div className="signup-container">
         <form action="" className="login-form">
           <div>
-            <label for="firstname">
+            <label htmlFor="firstname">
               Firstname <span className="asterick">*</span>
             </label>
 
@@ -53,13 +66,13 @@ export const Signup = () => {
               name="firstname"
               id="firstname"
               className="firstname"
-              autocomplete="off"
+              autoComplete="off"
               required=""
             />
           </div>
 
           <div>
-            <label for="lastname">
+            <label htmlFor="lastname">
               Lastname <span className="asterick">*</span>
             </label>
 
@@ -69,13 +82,13 @@ export const Signup = () => {
               name="lastname"
               id="lastname"
               className="lastname"
-              autocomplete="off"
+              autoComplete="off"
               required=""
             />
           </div>
 
           <div>
-            <label for="email">
+            <label htmlFor="email">
               Email <span className="asterick">*</span>
             </label>
 
@@ -85,13 +98,13 @@ export const Signup = () => {
               name="email"
               id="email"
               className="email"
-              autocomplete="off"
+              autoComplete="off"
               required=""
             />
           </div>
 
           <div>
-            <label for="password">
+            <label htmlFor="password">
               Password <span className="asterick">*</span>
             </label>
 
@@ -105,7 +118,9 @@ export const Signup = () => {
             />
           </div>
 
-          <button className="auth-btn" onClick={signupHandler}>Signup</button>
+          <button className="auth-btn" onClick={signupHandler}>
+            Signup
+          </button>
 
           <div className="form-links">
             Already have an account?
