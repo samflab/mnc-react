@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import { useCart, useWishlist } from "../../context";
 import { dispatchHandler, ACTION_TYPE, presentItem } from "../../util";
 import "./Cart.css";
@@ -8,7 +9,7 @@ export const CartItems = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
 
   const moveToWishlist = (product) => {
-    dispatchHandler(wishlistDispatch, ACTION_TYPE.ADD_TO_WISHLIST, product);
+    dispatchHandler(wishlistDispatch, ACTION_TYPE.ADD_TO_WISHLIST, product, toast.success("Moved to wishlist"));
     dispatchHandler(cartDispatch, ACTION_TYPE.REMOVE_FROM_CART, product);
   };
 
@@ -32,7 +33,8 @@ export const CartItems = () => {
                     dispatchHandler(
                       cartDispatch,
                       ACTION_TYPE.REMOVE_FROM_CART,
-                      product
+                      product,
+                      toast.success("Removed from cart")
                     )
                   }
                 ></i>
@@ -49,7 +51,8 @@ export const CartItems = () => {
                       dispatchHandler(
                         cartDispatch,
                         ACTION_TYPE.DECREASE_QUANTITY,
-                        product
+                        product,
+                        toast.info("Quantity decreased")
                       )
                     }
                     disabled={product.quantity === 1}
@@ -64,7 +67,8 @@ export const CartItems = () => {
                       dispatchHandler(
                         cartDispatch,
                         ACTION_TYPE.INCREASE_QUANTITY,
-                        product
+                        product,
+                        toast.info("Quantity increased")
                       )
                     }
                   >

@@ -9,10 +9,24 @@ import { Wishlist } from "./pages/Wishlist";
 import { Cart } from "./pages/Cart";
 import { Login } from "./components/Auth/Login";
 import { Signup } from "./components/Auth/Signup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer
+           position="bottom-left"
+           autoClose={3000}
+           hideProgressBar
+           newestOnTop={false}
+           closeOnClick
+           rtl={false}
+           pauseOnFocusLoss={false}
+           draggable={false}
+           pauseOnHover
+          />
+
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

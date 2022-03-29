@@ -5,6 +5,7 @@ import "./Filter.css";
 import { useCart, useFilter, useWishlist} from "../../context";
 import { ACTION_TYPE, dispatchHandler, filterMethod,presentItem } from "../../util";
 import { ProductCard } from "./ProductCard";
+import { toast } from "react-toastify";
 
 export const ProductList = () => {
   const { state } = useFilter();
@@ -59,35 +60,40 @@ export const ProductList = () => {
                 dispatchHandler(
                   wishlistDispatch,
                   ACTION_TYPE.ADD_TO_WISHLIST,
-                  filterProduct
+                  filterProduct,
+                  toast.success("Added to wishlist")
                 )
               }
               removeFromWishlist={() =>
                 dispatchHandler(
                   wishlistDispatch,
                   ACTION_TYPE.REMOVE_FROM_WISHLIST,
-                  filterProduct
+                  filterProduct,
+                  toast.success("Removed from wishlist")
                 )
               }
               addToCart={() =>
                 dispatchHandler(
                   cartDispatch,
                   ACTION_TYPE.ADD_TO_CART,
-                  filterProduct
+                  filterProduct,
+                  toast.success("Added to cart")
                 )
               }
               removeFromCart={() =>
                 dispatchHandler(
                   cartDispatch,
                   ACTION_TYPE.REMOVE_FROM_CART,
-                  filterProduct
+                  filterProduct,
+                  toast.success("Removed from cart")
                 )
               }
               moveToCart={() => {
                 dispatchHandler(
                   cartDispatch,
                   ACTION_TYPE.ADD_TO_CART,
-                  filterProduct
+                  filterProduct,
+                  toast.success("Moved to cart")
                 );
                 dispatchHandler(
                   wishlistDispatch,
