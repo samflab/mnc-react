@@ -82,8 +82,7 @@ export const WishlistItems = () => {
                 dispatchHandler(
                   wishlistDispatch,
                   ACTION_TYPE.REMOVE_FROM_WISHLIST,
-                  product,
-                  toast.success("Removed from wishlist")
+                  product
                 );
               }}
             />

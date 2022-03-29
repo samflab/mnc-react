@@ -10,7 +10,7 @@ export const CartItems = () => {
 
   const moveToWishlist = (product) => {
     dispatchHandler(wishlistDispatch, ACTION_TYPE.ADD_TO_WISHLIST, product, toast.success("Moved to wishlist"));
-    dispatchHandler(cartDispatch, ACTION_TYPE.REMOVE_FROM_CART, product, toast.success("Removed from cart"));
+    dispatchHandler(cartDispatch, ACTION_TYPE.REMOVE_FROM_CART, product);
   };
 
   return (

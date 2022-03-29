@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useCart,useWishlist } from "../../context"; 
 import { ACTION_TYPE,dispatchHandler,presentItem } from "../../util";
 import { ProductCard } from "../ProductList/ProductCard";
@@ -57,35 +58,40 @@ export const Trending = () => {
                 dispatchHandler(
                   wishlistDispatch,
                   ACTION_TYPE.ADD_TO_WISHLIST,
-                  product
+                  product,
+                  toast.success("Added to wishlist")
                 )
               }
               removeFromWishlist={() =>
                 dispatchHandler(
                   wishlistDispatch,
                   ACTION_TYPE.REMOVE_FROM_WISHLIST,
-                  product
+                  product,
+                  toast.success("Removed from wishlist")
                 )
               }
               addToCart={() =>
                 dispatchHandler(
                   cartDispatch,
                   ACTION_TYPE.ADD_TO_CART,
-                  product
+                  product,
+                  toast.success("Added to cart")
                 )
               }
               removeFromCart={() =>
                 dispatchHandler(
                   cartDispatch,
                   ACTION_TYPE.REMOVE_FROM_CART,
-                  product
+                  product,
+                  toast.success("Removed from cart")
                 )
               }
               moveToCart={() => {
                 dispatchHandler(
                   cartDispatch,
                   ACTION_TYPE.ADD_TO_CART,
-                  product
+                  product,
+                  toast.success("Moved to cart")
                 );
                 dispatchHandler(
                   wishlistDispatch,
